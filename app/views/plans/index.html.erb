@@ -1,0 +1,38 @@
+<p class="pull-right">
+  <%= link_to "make plan", new_plan_path, class: "btn btn-primary", style: "color: white;" %>
+</p>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>idx</th>
+    <th>title</th>
+    <th>description</th>
+    <th>public</th>
+    <th>manage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @plans.each do |plan| %>
+    <tr>
+      <td>
+        <%= plan.id %>
+      </td>
+      <td>
+        <%= plan.title %>
+      </td>
+      <td>
+        <%= plan.description %>
+      </td>
+      <td>
+        <%= plan.public %>
+      </td>
+      <td>
+        <%= link_to "modify", edit_plan_path(plan), class: 'btn btn-primary', style: "color: white;" %>
+        <%= link_to "delete", plan_path(plan), confirm: "Sure?",
+                    method: :delete, class: "btn btn-danger", style: "color: white;" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
