@@ -4,7 +4,7 @@ gem 'sqlite3'
 
 gem 'paperclip' # image process gem
 gem 'simple_form' # form layout, message toolkit
-gem 'inherited_resources' # scaffolding in controller
+gem 'inherited_resources' # scaffolding in controllers
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
