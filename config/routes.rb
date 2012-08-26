@@ -1,6 +1,8 @@
 Myapp::Application.routes.draw do
   resources :posts
 
+  resources :plans
+
   authenticated :user do
     root :to => 'home#index'
   end

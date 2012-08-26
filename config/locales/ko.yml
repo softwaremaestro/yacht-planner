@@ -1,0 +1,25 @@
+ko:
+  # Cancan
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    update:
+      project: "Not allowed to update this project."
+  errors:
+    messages:
+      blank: "Required"
+  activerecord:
+    errors:
+      messages:
+        blank: "필수 정보입니다"
+        empty: "필수 정보입니다." # paperclip에서 사용
+        taken: "이미 사용 중입니다."
+        record_invalid: "invalid"
+      models:
+        user:
+          attributes:
+            username:
+              invalid: "유효한 아이디가 아닙니다. 영문자, 숫자, _, - 만 사용해 주세요."
+            password:
+              confirmation: "'비밀번호'와 '비밀번호 확인'이 일치하지 않습니다."
