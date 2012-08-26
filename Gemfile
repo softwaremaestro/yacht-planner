@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'sqlite3'
 
-gem 'paperclip'
+gem 'paperclip' # image process gem
+gem 'simple_form' # form layout, message toolkit
+gem 'inherited_resources' # scaffolding in controller
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
