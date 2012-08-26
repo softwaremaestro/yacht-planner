@@ -3,6 +3,7 @@ gem 'rails', '3.2.2'
 gem 'sqlite3'
 
 gem 'paperclip'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
