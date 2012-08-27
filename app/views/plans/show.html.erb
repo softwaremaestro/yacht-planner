@@ -1,0 +1,36 @@
+<h3>Plans Page</h3>
+
+<table class="table">
+  <!--<thead>-->
+  <!--<tr>-->
+  <!--<th>사진</th>-->
+  <!--<th>아이디</th>-->
+  <!--<th>이름</th>-->
+  <!--<th>설명</th>-->
+  <!--<th>공개설정</th>-->
+  <!--<th>수정/삭제</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+      <tr>
+        <td><%= image_tag @plan.cover.url(:medium), class: "thumbnail" %></td>
+      </tr>
+      <tr>
+        <td><%= @plan.title %></td>
+      </tr>
+      <tr>
+        <td><%= @plan.description %></td>
+      </tr>
+      <tr>
+        <td><%= @plan.public %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to "수정", edit_plan_path(@plan) %>
+          <%= link_to "삭제", @plan, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' } %>
+          <%= link_to "뒤로", plans_path %>
+        </td>
+      </tr>
+
+  <!--</tbody>-->
+</table>

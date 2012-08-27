@@ -3,29 +3,23 @@
 <%= link_to "새로 만들기", new_plan_path %>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>사진</th>
-      <th>아이디</th>
-      <th>이름</th>
-      <th>설명</th>
-      <th>공개설정</th>
-      <th>수정/삭제</th>
-    </tr>
-  </thead>
-  <tbody>
   <% @plans.each do |plan| %>
-    <tr>
-      <td><%= image_tag plan.cover.url(:thumb), class: "thumbnail" %></td>
-      <td><%= plan.id %></td>
-      <td><%= plan.title %></td>
-      <td><%= plan.description %></td>
-      <td><%= plan.public %></td>
-      <td>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td><%= image_tag plan.cover.url(:thumb), class: "list_image" %></td>
+
+      <td class="list_description">
+        <dl>
+            <dt><%= plan.title %></dt>
+            <dd><%= truncate(strip_tags(plan.description), length: 80) %></dd>
+
+        </dl>
+      </td>
+      <td class="list_actions">
+        <%= plan.public %>
+        <%= link_to "보기", plan %>
         <%= link_to "수정", edit_plan_path(plan) %>
         <%= link_to "삭제", plan, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' } %>
       </td>
     </tr>
   <% end %>
-  </tbody>
 </table>
