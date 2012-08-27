@@ -1,6 +1,6 @@
-class CreateArticle < ActiveRecord::Migration
+class CreateArticles < ActiveRecord::Migration
   def change
-    create_table :article do |t|
+    create_table :articles do |t|
       t.integer :plan_id
       t.integer :sub_category_id
       t.integer :user_id

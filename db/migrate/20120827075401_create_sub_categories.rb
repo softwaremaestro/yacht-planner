@@ -1,6 +1,6 @@
-class CreateSubCategory < ActiveRecord::Migration
+class CreateSubCategories < ActiveRecord::Migration
   def change
-    create_table :sub_category do |t|
+    create_table :sub_categorys do |t|
       t.integer :plan_id
       t.string :title
 
