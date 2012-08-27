@@ -1,14 +1,12 @@
-class CreateComment < ActiveRecord::Migration
-
+class CreateComments < ActiveRecord::Migration
   def change
-    create_table :comment do |t|
+    create_table :comments do |t|
       t.integer :article_id
       t.integer :user_id
 
       t.text :content
 
-      t.timestamp
+      t.timestamps
     end
   end
-
 end
