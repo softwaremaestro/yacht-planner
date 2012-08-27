@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821114240) do
+ActiveRecord::Schema.define(:version => 20120827073632) do
+
+  create_table "article", :force => true do |t|
+    t.integer "plan_id"
+    t.integer "sub_category_id"
+    t.integer "user_id"
+    t.text    "content"
+  end
+
+  create_table "comment", :force => true do |t|
+    t.integer "article_id"
+    t.integer "user_id"
+    t.text    "content"
+  end
 
   create_table "plans", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +57,11 @@ ActiveRecord::Schema.define(:version => 20120821114240) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "sub_category", :force => true do |t|
+    t.integer "plan_id"
+    t.string  "title"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
