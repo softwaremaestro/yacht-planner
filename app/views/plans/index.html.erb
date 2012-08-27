@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>사진</th>
       <th>아이디</th>
       <th>이름</th>
       <th>설명</th>
@@ -15,6 +16,7 @@
   <tbody>
   <% @plans.each do |plan| %>
     <tr>
+      <td><%= image_tag plan.cover.url(:thumb), class: "thumbnail" %></td>
       <td><%= plan.id %></td>
       <td><%= plan.title %></td>
       <td><%= plan.description %></td>
