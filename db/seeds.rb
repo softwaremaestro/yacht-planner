@@ -11,3 +11,10 @@ puts 'New user created: ' << user.name
 user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
 puts 'New user created: ' << user2.name
 user.add_role :admin
+
+puts 'SETTING UP DEFAULT article'
+article = Article.create! :content =>'test1', :plan_id =>'1',:sub_category_id=>'1',:user_id=>'1'
+puts 'New article created: ' << article.content
+article2 = Article.create! :content =>'test2', :plan_id =>'2',:sub_category_id=>'2',:user_id=>'2'
+puts 'New article created: ' << article2.content
+
