@@ -1,0 +1,42 @@
+<p>
+  <%= @plans.size %> 개의 계획이 있습니다.
+</p>
+
+<p class="pull-right">
+  <%= link_to "계획 만들기", new_plan_path, :class => "btn btn-primary" %>
+</p>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>제목</th>
+    <th>설명</th>
+    <th>공개여부</th>
+    <th>관리</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @plans.each do |plan| %>
+      <tr>
+        <td>
+          <%= plan.id %>
+        </td>
+        <td>
+          <%= plan.title %>
+        </td>
+        <td>
+          <%= plan.description %>
+        </td>
+        <td>
+          <%= plan.public %>
+        </td>
+        <td>
+          <%= link_to "수정", edit_plan_path(plan), :class => 'btn btn-primary' %>
+          <%= link_to "삭제", plan_path(plan), :confirm => "정말로 삭제하시겠습니까?",
+                      :method => :delete, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
