@@ -1,7 +1,24 @@
-<%= simple_form_for(@plan, :html => {:class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@plan.prepare_form, :html => {:class => 'form-horizontal' }) do |f| %>
+    <legend>
+      플랜 정보
+    </legend>
     <%= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
     <%= f.input :description, :input_html => {:class => "input-xlarge"} %>
     <%= f.input :public %>
+    <legend>
+      서브 카테고리 정보
+    </legend>
+    <div id='sub-categories'>
+      <%= f.simple_fields_for :sub_categories do |c| %>
+          <%= render "sub_category_fields", :f => c %>
+
+          <div class="links">
+            <%= link_to_add_association '서브 카테고리 추가', f, :sub_categories, :partial => "plans/sub_category_fields" %>
+
+            <%#= link_to_add_association "서브 카테고리 추가", f, :sub_categories %>
+          </div>
+      <% end %>
+    </div>
     <div class="form-actions">
       <%= f.button :submit, :class => "btn-primary" %>
     </div>
