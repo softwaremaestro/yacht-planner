@@ -41,8 +41,84 @@
 
 }
 
+@media (max-width: 480px) {
+  .binder_ring {
+    clear:both;
+    display: block;
+    background-image: url('/assets/binder_ring_vertical.png');
+    background-repeat: repeat-x;
+    width:79%;
+    height:74px;
+    z-index:100;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: -35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .binder_ring {
+    clear:both;
+    display: block;
+    background-image: url('/assets/binder_ring_vertical.png');
+    background-repeat: repeat-x;
+    width:91%;
+    height:74px;
+    z-index:100;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -35px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .binder_ring {
+    clear:both;
+    display: block;
+    background-image: url('/assets/binder_small.png');
+    background-repeat: repeat-y;
+    width:74px;
+    height:43%;
+    z-index:100;
+    position: absolute;
+    margin-left: 150px;
+    margin-top: -300px;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .binder_ring {
+    clear:both;
+    display: block;
+    background-image: url('/assets/binder_ring.png');
+    background-repeat: repeat-y;
+    width:74px;
+    height:43%;
+    z-index:100;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .binder_ring {
+    clear:both;
+    display: block;
+    background-image: url('/assets/binder_ring.png');
+    background-repeat: repeat-y;
+    width:74px;
+    height:43%;
+    z-index:100;
+    position: absolute;
+    margin-left: 252px;
+    margin-top: -300px;
+  }
+}
+
+
 .content {
-  background-image: url('/assets/notebg.png');
+  background-image: url('/assets/note_bg.png');
 
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
@@ -51,5 +127,17 @@
   border-radius: 0 0 6px 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.5);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.5);
-  box-shadow: 0 1px 2px rgba(0,0,0,.5);
+  //box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 27px;
+  font-size: 19.5px;
+  line-height: 36px;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #E5E5E5;
 }

@@ -1,4 +1,103 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<% if user_signed_in?  %>
+    <body>
+        <h3>Dashboard</h3>
+        <div class="container_fluid">
+            <div class="row-fluid">
+              <div class="span3" style="background-color: #ffffff; border-radius: 10px; border: 1px; border-color: #cccccc;">
+                <div id="user" class="well well-small">
+                     <table>
+                        <tr>
+                          <td>
+                            <%= link_to image_tag(current_user.avatar.url(:thumb), class: "thumbnail"), current_user %>
+                          </td>
+                          <td>
+                          <%= link_to current_user.name, current_user %>
+                           </td>
+                         </tr>
+                       </table>
+                </div>
+                <div id="plan" class="well well-small">
+                  진행중인 플랜 4개<br/>
+                  완료된 플랜 3개<br/>
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <%= image_tag("/assets/binder.png") %>
+                      </td>
+                      <td>
+                        <%= image_tag("/assets/binder.png") %><br/>
+                      </td>
+                    </tr>
+                  </table>
+                  <form class="form-search">
+                    <input type="text" class="input-medium search-query">
+                    <button type="submit" class="btn">Search</button>
+                  </form>
+                </div>
+
+                <div id="binder_ring">
+                  <div class="binder_ring"> </div>
+                  <br class="clear">
+                </div>
+
+              </div>
+              <div class="span9">
+                <div class="well well-small">
+                    <div style="margin-left: 20px;">
+                      <legend>
+                        Newsfeed
+                        <select class="pull-right">
+                          <option>서브카테고리1</option>
+                          <option>서브카테고리2</option>
+                          <option>서브카테고리3</option>
+                          <option>서브카테고리4</option>
+                        </select>
+                      </legend>
+
+                      <textarea rows="3" class="span12" placeholder="내용을 쓰세요."></textarea>
+                      <input type="file" accept="image/x-png, image/gif, image/jpeg">
+                      <input type="submit" value="등록" class="btn btn-primary pull-right">
+                    </div>
+                    <div class="well well-small" style="margin-left: 20px;">
+                      <div>
+                        <table>
+                            <tr>
+                              <td style="width:64px; vertical-align: top;">
+                               <img src="http://www.playwares.com/xe/files/attach/images/763181/139/759/002/906645e9f243fd5cb76679b86c48a826.jpg"
+                                 style="width:64px;">
+                              </td>
+                              <td style="padding-left:10px;">
+                               <span style="font-weight:bold; color:blue;">Tae Yeon</span>
+                               <p>
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                  게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                                </p>
+
+                            <div>
+
+                            </div>
+                            </td>
+                            </tr>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+<% else %>
+
+    Service Main
+
+    환영합니다!
+
 <% end %>
+</html>
