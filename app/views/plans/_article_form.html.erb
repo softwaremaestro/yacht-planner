@@ -1,0 +1,18 @@
+<%= simple_form_for(@article, :html => {:class => 'form-horizontal' }) do |f| %>
+    <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
+
+
+        <%= f.input :plan_id, :as => :hidden, :input_html => { :value => @plan.id }  %>
+        <%= f.input :sub_category_id, :as => :hidden, :input_html => { :value => '1'} %>
+        <%# 서브 카테고리, 인자값으로 받아서 넣어줘야함. 셀렉트 상자? %>
+
+        <%#= f.input :sub_category_id, :as => :hidden, :input_html => { :value => current_user.id}  %>
+        <%#= 여기서 보내는게 아니라, 받았을때 처리! 세션으로! %>
+
+        <%= f.input :content %>
+
+        <div class="form-actions">
+          <%= f.button :submit, :class => "btn-primary", :value => "전송!" %>
+        </div>
+
+<% end %>

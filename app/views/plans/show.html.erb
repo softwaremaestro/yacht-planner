@@ -1,1 +1,118 @@
-<%= @plan.inspect %>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+          /*
+              .userProfileImg{ height: 100px; float: left; }
+
+              .storyInnerContent {
+                float: left;width: 600px;
+                margin-left:10px;
+              }
+
+              .name{color:blue; }
+              .content{
+                font-family: "돋움", Dotum;
+                font-size: 10pt;
+
+                margin-top: 10px;
+              }
+              .article{
+                clear:both;
+              }
+          */
+      body{
+          text-align: center;
+          /*디버깅 용, 나중에 삭제! */
+
+      }
+
+
+      .userProfileImg{ height: 100px; float: left; }
+
+      .storyInnerContent {
+          float: left;width: 600px;
+          margin-left:10px;
+      }
+
+      .name{color:blue; }
+      .content{
+          font-family: "돋움", Dotum;
+          font-size: 10pt;
+
+          margin-top: 10px;
+      }
+      .article{
+          clear:both;
+      }
+
+
+      .top-div { /*background-image: url("http://www.noblesse.com/v3/content/ShowImage.do?id=42957&width=688");*/ border:5px solid #ccc; margin-top:10px; margin-left:0px; padding:10px; min-height:80px;   }
+      .top-under-div { border:0px; margin-top:20px; margin-left:0px; padding:0px; min-height:80px; font-size: 30pt;  }
+      .middle { background-color:#fff; border:0px solid #ccc; margin-top:10px; margin-left:0px; padding:10px; overflow:hidden; }
+      .left-menu { float:left; width:170px; background-color:#fff; border:5px solid #ccc; margin-top:0px; margin-left:0px; padding:10px; }
+
+      .center { border:5px solid #ccc; background-color:#fff; margin-top:0px; margin-left:210px; padding:10px; min-height:200px; }
+
+      .write-form {  border:5px solid #ccc; margin-top:0px; margin-left:0px; padding:0px; min-height:80px;  }
+      .articles{  border:5px solid #ccc; margin-top:10px; margin-left:0px; padding:0px; min-height:80px;  }
+      .left-menu-items { background-color:#fff; border:5px solid #ccc; margin:0px 0px 5px 0px; padding:0px; min-height:50px; }
+
+  </style>
+</head>
+
+<body>
+<div class="top-div">
+  img
+</div>
+<div class="top-under-div">
+  <%= @plan.title %>
+</div>
+
+<div class="middle">
+
+  <div class="left-menu">
+    <%  @plan.sub_categories.each do |sc| %>
+
+        <div class="left-menu-items">
+
+          <%= sc.title %>
+
+        </div>
+
+    <% end %>
+  </div>
+
+  <div class="center">
+    <div class="write-form">
+      <%= render 'plans/article_form' %>
+    </div>
+
+    <div class="articles">
+
+      <% @articles.each do |a|  %>
+          <div class="article">
+            <a><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/203344_100000198261373_2379965_q.jpg" class="userProfileImg"></a>
+            <div class="storyInnerContent">
+              <a href="http://www.facebook.com/sionics" class="name"><%= a.user_id  %></a>
+              <div class="content">
+                <%= a.content %>‎
+              </div>
+            </div>
+          </div>
+      <% end  %>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+</body>
+</html>
+
+
+
+
