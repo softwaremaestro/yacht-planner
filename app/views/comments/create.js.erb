@@ -1,0 +1,1 @@
+$("#comment_list_<%= dom_id(@comment.article) %>").append("<%= escape_javascript(render :partial => "comment" , :locals => { :c =>@comment})%>");

@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     @article.user_id = current_user.id
+    @comment = Comment.new
 
     if @article.save
       respond_to do |format|

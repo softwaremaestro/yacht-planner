@@ -11,6 +11,21 @@
       <%= a.content %>
     </p>
 
-    <div style="margin-bottom:10px;">댓글</div>
+    <div id="comment_list_<%= dom_id(a)%>">
+      <% a.comments.each do |c| %>
+        <%= render "comments/comment", :c => c  %>
+      <% end %>
+    </div>
+
+    <div style="padding-top:8px; ">
+      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
+      <div style="margin-left:65px;">
+        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;"><%= current_user.name %></span>
+        <div style="margin-top:5px;">
+          <%= render "comments/comment_form" , :a => a %>
+        </div>
+      </div>
+    </div>
   </td>
 </tr>
+

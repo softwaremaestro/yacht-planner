@@ -1,16 +1,13 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'sqlite3'
-<<<<<<< HEAD
 
-gem 'paperclip', '3.0.4'
-gem 'simple_form'
-gem 'inherited_resources'
+gem 'paperclip', "3.0.4" # image process gem
+gem 'simple_form' # form layout, message toolkit
+gem 'inherited_resources' # scaffolding in controllers
 
-gem "cocoon"
+gem 'cocoon'
 
-=======
->>>>>>> remotes/origin/master
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -29,9 +26,5 @@ gem "bootstrap-sass", ">= 2.0.4.0"
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
-<<<<<<< HEAD
 gem "therubyracer", :group => :assets, :platform => :ruby
 gem 'shoulda-matchers', :group => :test
-=======
-gem "therubyracer", :group => :assets, :platform => :ruby
->>>>>>> remotes/origin/master

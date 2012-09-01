@@ -1,0 +1,10 @@
+<div style="padding-top:8px;" id="<%= dom_id(c) %>">
+  <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
+  <div style="margin-left:65px;">
+    <span style="color: #3B5998; font-weight: bold; font-size: 9pt;"><%= c.user.try(:name) %> </span>
+    <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), comment_path(c), confirm: "sure?", method: :delete,
+                remote: true %>
+
+    <pre style="margin-top:5px;"><%= c.content %></pre>
+  </div>
+</div>
