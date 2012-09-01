@@ -10,10 +10,10 @@ class PlansController < ApplicationController
     @sub_category_id = params[:sub_category]
 
 
-    if @sub_category_id == "" || @sub_category_id == nil
-      @articles = @plan.articles
+    if @sub_category_id
+      @articles = @plan.sub_categories.find(@sub_category_id).articles.includes(:user).all(order:"updated_at desc")
     else
-      @articles = @plan.sub_categories.find(@sub_category_id).articles
+      @articles = @plan.articles.includes(:user).all(order:"updated_at desc")
     end
 
     @article = Article.new

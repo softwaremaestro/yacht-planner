@@ -90,13 +90,15 @@
 
             <% @articles.each do |a|  %>
 
-            <tr>
+            <tr id="<%= dom_id(a) %>">
               <td style="vertical-align: top;">
                 <img src="http://cdn.btdot.com/3353/4f02ba6463f16.jpg.tn.jpg"
                      style="width:64px; height:64px;" class="thumbnail">
               </td>
               <td style="padding-left:10px;">
-                <span style="font-weight:bold; color:blue;"><%= a.user_id %></span>
+                <span style="font-weight:bold; color:blue;"><%= a.user.try(:name) || "Guest" %></span>
+                <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), article_path(a), confirm: "sure?", method: :delete,
+                            remote: true %>
                 <p style="margin-top:10px;">
                   <%= a.content %>
                 </p>
