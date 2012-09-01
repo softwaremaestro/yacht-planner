@@ -47,7 +47,7 @@
     display: block;
     background-image: url('/assets/binder_ring_vertical.png');
     background-repeat: repeat-x;
-    width:79%;
+    width:460px;
     height:74px;
     z-index:100;
     position: absolute;
@@ -62,7 +62,7 @@
     display: block;
     background-image: url('/assets/binder_ring_vertical.png');
     background-repeat: repeat-x;
-    width:91%;
+    width:700px;
     height:74px;
     z-index:100;
     position: absolute;
@@ -78,7 +78,7 @@
     background-image: url('/assets/binder_small.png');
     background-repeat: repeat-y;
     width:74px;
-    height:43%;
+    height:300px;
     z-index:100;
     position: absolute;
     margin-left: 150px;
@@ -93,11 +93,11 @@
     background-image: url('/assets/binder_ring.png');
     background-repeat: repeat-y;
     width:74px;
-    height:43%;
+    height:300px;
     z-index:100;
     position: absolute;
     margin-left: 200px;
-    margin-top: -300px;
+    margin-top: -330px;
   }
 }
 
@@ -108,7 +108,7 @@
     background-image: url('/assets/binder_ring.png');
     background-repeat: repeat-y;
     width:74px;
-    height:43%;
+    height:300px;
     z-index:100;
     position: absolute;
     margin-left: 252px;
@@ -118,7 +118,7 @@
 
 
 .content {
-  background-image: url('/assets/note_bg.png');
+//  background-image: url('/assets/note_bg.png');
 
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
