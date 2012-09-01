@@ -29,8 +29,7 @@
       </td>
       <td>
         <%= link_to "modify", edit_plan_path(plan), class: 'btn btn-primary', style: "color: white;" %>
-        <%= link_to "delete", plan_path(plan), confirm: "Sure?",
-                    method: :delete, class: "btn btn-danger", style: "color: white;" %>
+        <%= link_to content_tag(:i, "", class: "icon-remove pull-right"), plan_path(plan), confirm: "sure?", method: :delete %>
       </td>
     </tr>
   <% end %>
