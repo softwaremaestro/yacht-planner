@@ -9,14 +9,14 @@
           <table>
             <tr>
               <td style="width:48px;">
-                <img src="http://www.playwares.com/xe/files/attach/images/763181/139/759/002/906645e9f243fd5cb76679b86c48a826.jpg"
+                <img src="<%= current_user.avatar.url %>"
                      class="avatar" style="width:48px;">
                 <%#= 이미지 경로, 수정!  %>
               </td>
               <td style="padding-left:10px;">
-                <b style="font-size:14pt">Tae Yeon</b>
+                <b style="font-size:14pt"><%= current_user.name %></b>
                 <hr style="margin:3px;">
-                <small style="font-size:9pt; color:gray;">내 정보 수정</small>
+                <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a>
               </td>
             </tr>
           </table>
