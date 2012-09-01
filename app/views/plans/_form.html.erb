@@ -1,8 +1,28 @@
-<%= simple_form_for(@plan, :html => {:class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@plan, :html => {:class => 'form-horizontal', :multipart => true }) do |f| %>
+  <legend>
+    플랜 정보
+  </legend>
+
+  <div class="field">
+    <%= f.file_field :cover %>
+  </div>
+
+  <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
   <%= f.input :title %>
-  <%= f.input :description, :input_html => {:class => "input-xxlarge"} %>
+  <%= f.input :description, :input_html => {:class => "input-xlarge"} %>
   <%= f.input :public %>
+  <legend>
+    서브 카테고리 정보
+  </legend>
+  <div id='sub_categories'>
+    <%= f.simple_fields_for :sub_categories do |c| %>
+      <%= render "sub_category_fields", :f => c %>
+    <% end %>
+    <div class="link">
+      <%= link_to_add_association '추가', f, :sub_categories, class: "btn btn-info btn-mini offset3" %>
+    </div>
+  </div>
   <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= f.button :submit, :class => "btn-primary" %>
   </div>
 <% end %>

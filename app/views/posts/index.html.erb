@@ -1,27 +1,75 @@
-<h1>Listing posts</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.user_id %></td>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+    .userProfileImg{ height: 100px; float: left; }
 
-<br />
+    .storyInnerContent {
+      float: left;width: 600px;
+      margin-left:10px;
+    }
 
-<%= link_to 'New Post', new_post_path %>
+    .name{color:blue; }
+    .content{
+      font-family: "돋움", Dotum;
+      font-size: 10pt;
+
+      margin-top: 10px;
+    }
+    .article{
+      clear:both;
+    }
+
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+</head>
+<body>
+<div id="feedView">
+
+</div>
+<script>
+
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/posts/1",
+
+  }).error(function(msg) {
+        alert('error: 파일을 찾을 수가 없습니다.');
+
+      }).done(function(msg) {
+
+        $.each(msg, function(key, val) {
+          var items = [];
+          $.each(val, function(key, val) {
+            items.push(val);
+          });
+          var strs='<div class="article">\
+      <a><img src="'+ items[0] +'" class="userProfileImg"></a>\
+      <div class="storyInnerContent">\
+        <a href="http://www.facebook.com/sionics" class="name">'+items[1]+'</a>\
+        <div class="content">\
+            ‎ '+items[2]+'\
+        </div>\
+      </div>\
+    </div>\
+    ';
+          $('<div/>', {
+            'class': 'my-new-list',
+            html: strs
+          }).appendTo('#feedView');
+
+        });
+
+      });
+
+
+</script>
+</body>
+</html>
+
+
+
+

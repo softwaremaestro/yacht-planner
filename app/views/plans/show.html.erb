@@ -9,13 +9,14 @@
           <table>
             <tr>
               <td style="width:48px;">
-                <img src="http://www.playwares.com/xe/files/attach/images/763181/139/759/002/906645e9f243fd5cb76679b86c48a826.jpg"
+                <img src="<%= current_user.avatar.url %>"
                      class="avatar" style="width:48px;">
+                <%#= 이미지 경로, 수정!  %>
               </td>
               <td style="padding-left:10px;">
-                <b style="font-size:14pt">Tae Yeon</b>
+                <b style="font-size:14pt"><%= current_user.name %></b>
                 <hr style="margin:3px;">
-                <small style="font-size:9pt; color:gray;">내 정보 수정</small>
+                <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a>
               </td>
             </tr>
           </table>
@@ -26,47 +27,45 @@
       <!-- 참여 플랜 정보 -->
       <div class="well well-small">
         <div style="position: relative;">
-          <img src="http://pds22.egloos.com/pds/201204/05/91/d0135791_4f7d77c8a8a98.gif">
+          <!--<img src="http://pds22.egloos.com/pds/201204/05/91/d0135791_4f7d77c8a8a98.gif">-->
+          <%= image_tag @plan.cover.url %>
           <div style="position:absolute; top:0px; width:99%; height:40px; background:black; opacity:0.4;"></div>
           <div style="position:absolute; top:0px; width:99%; height:20px; color:white; padding:10px 0px;">
-            <span style="font-weight:bold;"><marquee>도원결의 도원결의 도원결의 도원결의</marquee></span>
+            <span style="font-weight:bold;"><marquee><%= @plan.title %></marquee></span>
           </div>
         </div>
         <div style="margin:10px auto 0px; width:95%; color:gray;">
-          우리는 한날 한시에 죽을 것을 다짐 합니다.
+          <%= @plan.description %>
         </div>
       </div>
 
-      <!-- 계획표 -->
+      <!-- 서브 카테고리 목록 -->
       <div class="well well-small">
         <table class="table">
           <thead>
           <tr>
+            <th>#</th>
             <th>카테고리</th>
-            <th style="width:30px;">상태</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>서브카테고리1</td>
-            <td><span style="color:green;">확정</span></td>
+            <td>0</td>
+            <td><%= link_to "전체", "/plans/"+@plan.id.to_s %></td>
           </tr>
-          <tr>
-            <td>서브카테고리2</td>
-            <td><span style="color:red;">미정</span></td>
-          </tr>
-          <tr>
-            <td>서브카테고리3</td>
-            <td><span style="color:red;">미정</span></td>
-          </tr>
-          <tr>
-            <td>서브카테고리4</td>
-            <td><span style="color:red;">미정</span></td>
-          </tr>
+
+          <%  @plan.sub_categories.each.with_index do |sc,index| %>
+
+            <tr>
+              <td><%= index+1  %></td>
+              <td><%= link_to sc.title, "/plans/"+@plan.id.to_s+"/sub_category/"+sc.id.to_s %></td>
+            </tr>
+
+          <% end %>
+
           </tbody>
         </table>
       </div>
-
     </div>
 
     <!-- Content Side -->
@@ -74,86 +73,41 @@
       <div class="well well-small">
         <!-- 새글 -->
         <div>
-          <legend>
-            New Post
-            <select class="pull-right">
-              <option>서브카테고리1</option>
-              <option>서브카테고리2</option>
-              <option>서브카테고리3</option>
-              <option>서브카테고리4</option>
-            </select>
-          </legend>
+          <%= render 'plans/article_form' %>
 
-          <textarea rows="3" class="span12" placeholder="내용을 쓰세요."></textarea>
-          <input type="file" accept="image/x-png, image/gif, image/jpeg">
-          <input type="submit" value="등록" class="btn btn-primary pull-right">
+
         </div>
 
-        <!-- 글 목록 -->
         <div>
           <table class="table">
             <thead>
-              <tr>
-                <th style="width:74px;"></th>
-                <th></th>
-              </tr>
+            <tr>
+              <th style="width:74px;"></th>
+              <th></th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
+
+            <% @articles.each do |a|  %>
+
+              <tr id="<%= dom_id(a) %>">
                 <td style="vertical-align: top;">
                   <img src="http://cdn.btdot.com/3353/4f02ba6463f16.jpg.tn.jpg"
                        style="width:64px; height:64px;" class="thumbnail">
                 </td>
                 <td style="padding-left:10px;">
-                  <span style="font-weight:bold; color:blue;">Suzy</span>
-                  <i class="icon-remove pull-right"></i>
+                  <span style="font-weight:bold; color:blue;"><%= a.user.try(:name) || "Guest" %></span>
+                  <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), article_path(a), confirm: "sure?", method: :delete,
+                              remote: true %>
                   <p style="margin-top:10px;">
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
+                    <%= a.content %>
                   </p>
 
-                  <div style="margin-bottom:10px;">
-                    댓글</div>
+                  <div style="margin-bottom:10px;">댓글</div>
                 </td>
               </tr>
-              <tr>
-                <td style="vertical-align: top;">
-                  <img src="http://www.playwares.com/xe/files/cache/thumbnails/121/242/018/200x200.crop.jpg"
-                       style="width:64px; height:64px;" class="thumbnail">
-                </td>
-                <td style="padding-left:10px;">
-                  <span style="font-weight:bold; color:blue;">IU!</span>
-                  <i class="icon-remove pull-right"></i>
-                  <p style="margin-top:10px;">
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                  </p>
+            <% end  %>
 
-                  <div>댓글</div>
-                </td>
-              </tr>
-              <tr>
-                <td style="vertical-align: top;">
-                  <img src="http://www.playwares.com/xe/files/attach/images/763181/139/759/002/906645e9f243fd5cb76679b86c48a826.jpg"
-                       style="width:64px; height:64px;" class="thumbnail">
-                </td>
-                <td style="padding-left:10px;">
-                  <span style="font-weight:bold; color:blue;">Tae Yeon</span>
-                  <i class="icon-remove pull-right"></i>
-                  <p style="margin-top:10px;">
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                    게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글 게시글
-                  </p>
-
-                  <div>댓글</div>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
