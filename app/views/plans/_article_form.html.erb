@@ -1,18 +1,21 @@
 <%= simple_form_for(@article, :html => {:class => 'form-horizontal' }) do |f| %>
     <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
-
+    <legend>
+        New Post
 
         <%= f.input :plan_id, :as => :hidden, :input_html => { :value => @plan.id }  %>
-        <%= f.input :sub_category_id, :as => :hidden, :input_html => { :value => '1'} %>
+
+        <%= f.input :sub_category_id, :label => false do %>
+            <%= f.select :sub_category_id, @plan.sub_categories.all.map { |r| [r.title, r.id] } %>
+        <% end %>
+    </legend>
         <%# 서브 카테고리, 인자값으로 받아서 넣어줘야함. 셀렉트 상자? %>
 
         <%#= f.input :sub_category_id, :as => :hidden, :input_html => { :value => current_user.id}  %>
         <%#= 여기서 보내는게 아니라, 받았을때 처리! 세션으로! %>
 
-        <%= f.input :content %>
+        <%= f.input :content,:wrapper_html => {:class => "span12"}, :input_html => { :rows => "3", :class => "span12", :placeholder => "내용을 쓰세요." }, :label => false %>
 
-        <div class="form-actions">
-          <%= f.button :submit, :class => "btn-primary", :value => "전송!" %>
-        </div>
+        <%= f.button :submit, :class => "btn btn-primary pull-right", :value => "등록" %>
 
 <% end %>

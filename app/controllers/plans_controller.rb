@@ -11,7 +11,7 @@ class PlansController < ApplicationController
 
 
     if @sub_category_id == "" || @sub_category_id == nil
-        @articles = @plan.articles
+      @articles = @plan.articles
     else
       @articles = @plan.sub_categories.find(@sub_category_id).articles
     end

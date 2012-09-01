@@ -1,6 +1,9 @@
 Myapp::Application.routes.draw do
   resources :posts
   resources :plans
+#  resources :plans do
+#    resources :sub_categories
+#  end
 
 
   authenticated :user do
@@ -11,4 +14,8 @@ Myapp::Application.routes.draw do
   resources :users, :only => [:show, :index]
   resources :articles, :only => [:new, :update,:create]
 
+  #match ':controller/:action/:id/sub_category/:sub_category'
+
+
+  match 'plans/:id/sub_category/:sub_category' => 'plans#show', :constraints => {:sub_category => /\d+/}
 end

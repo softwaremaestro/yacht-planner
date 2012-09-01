@@ -26,7 +26,7 @@
           <%= plan.title %>
         </td>
         <td>
-          <%= plan.description %>
+            <%= link_to plan.description, plan_path(plan) %>
         </td>
         <td>
           <%= plan.public %>
