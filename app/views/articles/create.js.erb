@@ -1,1 +1,1 @@
-$(".article-list").prepend("<%= javascript_escape(render :partial => "article")%>");
+$("#article_list").prepend("<%= escape_javascript(render :partial => "article" , :locals => { :a =>@article})%>");

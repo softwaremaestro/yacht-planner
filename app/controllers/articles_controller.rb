@@ -4,10 +4,14 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
 
     if @article.save
-      redirect_to "/plans/"+@article.plan_id.to_s, notice: current_user.id.to_s+'article was successfully created.'
+      respond_to do |format|
+        format.html {redirect_to "/plans/"+@article.plan_id.to_s, notice: 'article was successfully created.' }
+        format.js
+      end
     else
-      redirect_to "/plans/"+@article.plan_id.to_s, notice: current_user.id.to_s+'article was failed.'
+      redirect_to "/plans/"+@article.plan_id.to_s, notice: 'article was failed.'
     end
+
   end
 
   def destroy

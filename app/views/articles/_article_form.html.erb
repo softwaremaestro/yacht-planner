@@ -1,4 +1,4 @@
-<%= simple_form_for(@article, :html => {:class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@article, :html => {:class => 'form-horizontal' },remote: true ) do |f| %>
     <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
     <legend>
         New Post
