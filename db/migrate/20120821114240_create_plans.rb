@@ -8,6 +8,6 @@ class CreatePlans < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_attachment :plans, :cover
+    add_attachment :plans, :covers
   end
 end

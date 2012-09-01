@@ -8,7 +8,7 @@ class Plan < ActiveRecord::Base
   has_many :sub_categories, :dependent => :destroy
   has_many :articles, :through => :sub_categories
 
-
+  validates :sub_categories, :length => {:minimum => 3}
   accepts_nested_attributes_for :sub_categories, :allow_destroy => true
   accepts_nested_attributes_for :articles, :allow_destroy => true
 

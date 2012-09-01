@@ -6,6 +6,8 @@ gem 'paperclip' # image process gem
 gem 'simple_form' # form layout, message toolkit
 gem 'inherited_resources' # scaffolding in controllers
 
+gem 'cocoon'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
