@@ -1,0 +1,31 @@
+<tr id="<%= dom_id(a) %>">
+  <td style="vertical-align: top;">
+    <img src="<%= a.user.avatar.url %>"
+         style="width:64px; height:64px;" class="thumbnail">
+  </td>
+  <td style="padding-left:10px;">
+    <span style="font-weight:bold; color:blue;"><%= a.user.try(:name) || "Guest" %></span>
+    <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), article_path(a), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
+                remote: true %>
+    <p style="margin-top:10px;">
+      <%= a.content %>
+    </p>
+
+    <div id="comment_list_<%= dom_id(a)%>">
+      <% a.comments.each do |c| %>
+        <%= render "comments/comment", :c => c  %>
+      <% end %>
+    </div>
+
+    <div style="padding-top:8px; ">
+      <img src="<%= current_user.avatar.url %>" style="width:48px; float:left;" class="thumbnail">
+      <div style="margin-left:65px;">
+        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;"><%= current_user.name %></span>
+        <div style="margin-top:5px;">
+          <%= render "comments/comment_form" , :a => a %>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>
+

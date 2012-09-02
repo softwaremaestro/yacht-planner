@@ -44,7 +44,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
-    cocaine (0.2.1)
+    cocaine (0.3.0)
     cocoon (1.0.22)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -110,7 +110,7 @@ GEM
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
     orm_adapter (0.4.0)
-    paperclip (3.1.2)
+    paperclip (3.0.4)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -214,7 +214,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   launchy (>= 2.1.2)
-  paperclip
+  paperclip (= 3.0.4)
   rails (= 3.2.2)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.11.0)

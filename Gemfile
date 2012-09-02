@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'sqlite3'
 
-gem 'paperclip' # image process gem
+gem 'paperclip', '3.0.4' # image process gem
 gem 'simple_form' # form layout, message toolkit
 gem 'inherited_resources' # scaffolding in controllers
 
