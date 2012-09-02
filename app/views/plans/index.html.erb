@@ -1,25 +1,42 @@
-<h3>Plans List</h3>
+<p>
+  <%= @plans.size %> 개의 계획이 있습니다.
+</p>
 
-<%= link_to "새로 만들기", new_plan_path %>
+<p class="pull-right">
+  <%= link_to "계획 만들기", new_plan_path, :class => "btn btn-primary" %>
+</p>
 
-<table class="table">
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>제목</th>
+    <th>설명</th>
+    <th>공개여부</th>
+    <th>관리</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @plans.each do |plan| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td><%= image_tag plan.cover.url(:thumb), class: "list_image" %></td>
-
-      <td class="list_description">
-        <dl>
-            <dt><%= plan.title %></dt>
-            <dd><%= truncate(strip_tags(plan.description), length: 80) %></dd>
-
-        </dl>
-      </td>
-      <td class="list_actions">
-        <%= plan.public %>
-        <%= link_to "보기", plan %>
-        <%= link_to "수정", edit_plan_path(plan) %>
-        <%= link_to "삭제", plan, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' } %>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <%= plan.id %>
+        </td>
+        <td>
+          <%= plan.title %>
+        </td>
+        <td>
+          <%= link_to plan.description, plan_path(plan) %>
+        </td>
+        <td>
+          <%= plan.public %>
+        </td>
+        <td>
+          <%= link_to "수정", edit_plan_path(plan), :class => 'btn btn-primary' %>
+          <%= link_to "삭제", plan_path(plan), :confirm => "정말로 삭제하시겠습니까?",
+                      :method => :delete, :class => "btn btn-danger" %>
+        </td>
+      </tr>
   <% end %>
+  </tbody>
 </table>

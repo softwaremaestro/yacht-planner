@@ -1,13 +1,107 @@
-<h3>Plans Page</h3>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <!-- Sidebar Side -->
+    <div class="span3">
 
-    <div class="table">
-      <%= image_tag @plan.cover.url(:medium), class: "thumbnail" %>
-      <h3><%= @plan.title %></h3>
-      <%=  sanitize(@plan.description) %>
-      <div class="price_line">
-      <span class="price"><%= @plan.public %></span>
-      <%= link_to "수정", edit_plan_path(@plan) %>
-      <%= link_to "삭제", @plan, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' } %>
-      <%= link_to "뒤로", plans_path %>
+      <!-- 프로필 정보 -->
+      <div class="well well-small">
+        <div class="container-fluid">
+          <table>
+            <tr>
+              <td style="width:48px;">
+                <img src="<%= current_user.avatar.url %>"
+                     class="avatar" style="width:48px;">
+                <%#= 이미지 경로, 수정!  %>
+              </td>
+              <td style="padding-left:10px;">
+                <b style="font-size:14pt"><%= current_user.name %></b>
+                <hr style="margin:3px;">
+                <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+
+      <!-- 참여 플랜 정보 -->
+      <div class="well well-small">
+        <div style="position: relative;">
+          <!--<img src="http://pds22.egloos.com/pds/201204/05/91/d0135791_4f7d77c8a8a98.gif">-->
+          <%= image_tag @plan.cover.url %>
+          <div style="position:absolute; top:0px; width:99%; height:40px; background:black; opacity:0.4;"></div>
+          <div style="position:absolute; top:0px; width:99%; height:20px; color:white; padding:10px 0px;">
+            <span style="font-weight:bold;"><marquee><%= @plan.title %></marquee></span>
+          </div>
+        </div>
+        <div style="margin:10px auto 0px; width:95%; color:gray;">
+          <%= @plan.description %>
+        </div>
+      </div>
+
+      <!-- 서브 카테고리 목록 -->
+      <div class="well well-small">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>카테고리</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>0</td>
+            <td><%= link_to "전체", "/plans/"+@plan.id.to_s %></td>
+          </tr>
+
+          <%  @plan.sub_categories.each.with_index do |sc,index| %>
+              <tr>
+                <td><%= index+1  %></td>
+                <td><%= link_to sc.title, "/plans/"+@plan.id.to_s+"/sub_category/"+sc.id.to_s %></td>
+              </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="well well-small">
+        <div>최근 작업 : </div>
+        <span id="process">working!</span>
+      </div>
+
     </div>
+
+    <!-- Content Side -->
+    <div class="span9">
+      <div class="well well-small">
+        <!-- 새글 -->
+        <div>
+          <%= render 'articles/article_form' %>
+
+
+        </div>
+
+        <div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th style="width:74px;"></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody id="article_list">
+
+            <% @articles.each do |a|  %>
+
+                <%= render 'articles/article' ,:a=>a %>
+
+            <% end  %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -11,23 +11,32 @@
       </div>
     <% end %>
 
-    <div class="field">
+    <%= simple_form_for(@plan, :html => {:class => 'form-horizontal', :multipart => true }) do |f| %>
+        <legend>
+          플랜 정보
+        </legend>
+
+        <div class="field">
+          <%= f.file_field :cover %>
+        </div>
+
+        <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
         <%= f.input :title %>
-    </div>
-    <div class="field">
         <%= f.input :description, :input_html => {:class => "input-xlarge"} %>
-    </div>
-    <div>
-        <%=  f.label :public %><br />
-        <%= f.select :public, [["공개",1], ["비공개",2]] %>
-    </div>
-
-    <div class="field">
-      <%= f.label :cover_url %><br />
-      <%= f.file_field :cover %>
-    </div>
-
-    <div class="form-actions">
-        <%= f.button :submit, :class => "btn-primary" %>
-    </div>
+        <%= f.input :public %>
+        <legend>
+          서브 카테고리 정보
+        </legend>
+        <div id='sub_categories'>
+          <%= f.simple_fields_for :sub_categories do |c| %>
+              <%= render "sub_category_fields", :f => c %>
+          <% end %>
+          <div class="link">
+            <%= link_to_add_association '추가', f, :sub_categories, class: "btn btn-info btn-mini offset3" %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, :class => "btn-primary" %>
+        </div>
+    <% end %>
 <% end %>
