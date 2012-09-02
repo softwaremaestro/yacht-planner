@@ -1,0 +1,10 @@
+<div style="padding-top:8px;" id="<%= dom_id(c) %>">
+  <img src="<%= c.user.avatar.url %>" style="width:48px; float:left;" class="thumbnail">
+  <div style="margin-left:65px;">
+    <span style="color: #3B5998; font-weight: bold; font-size: 9pt;"><%= c.user.try(:name) %> </span>
+    <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), comment_path(c), confirm: "이 댓글을 삭제 하시겠습니까?", method: :delete,
+                remote: true %>
+
+    <pre style="margin-top:5px;"><%= c.content %></pre>
+  </div>
+</div>

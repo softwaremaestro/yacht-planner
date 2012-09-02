@@ -1,0 +1,9 @@
+<%= simple_form_for(@comment, :html => {:class => 'form-horizontal' },remote: true ) do |f| %>
+    <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
+    <%= f.input :article_id, :as => :hidden, :input_html => { :value => a.id }  %>
+    <%#= 랜더링 할때, a를 가져와야함.  %>
+
+    <%= f.text_area :content, :rows => "1", :class => "span12", :placeholder => "댓글을 쓰세요..", id: "comment_area_"+a.id.to_s %>
+
+    <%= f.button :submit, :class => "btn btn-primary pull-right", style: "margin-top:5px;", :value => "등록" %>
+<% end %>

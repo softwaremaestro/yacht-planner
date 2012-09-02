@@ -1,50 +1,28 @@
 class PlansController < ApplicationController
-
-  def new
-    @plan = Plan.new
-  end
-
-  def index
-    @plans = Plan.all
-  end
+  inherit_resources
+  before_filter :authenticate_user!, :except => [:index]
 
   def show
-    @plan = Plan.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @plan }
-    end
-  end
+    @plan= Plan.find(params[:id])
 
-  def create
-    @plan = Plan.new(params[:plan])
+    @sub_category_id = params[:sub_category]
 
-    if @plan.save
-      redirect_to :action => :index
+
+    if @sub_category_id
+      @articles = @plan.sub_categories.find(@sub_category_id).articles.includes(:user,:comments).all(order:"updated_at desc")
     else
-      render :action => :new
+      @articles = @plan.articles.includes(:user,:comments).all(order:"updated_at desc")
     end
+
+    @article = Article.new
+    @comment = Comment.new
+
+    # 라우팅 수정 해야함. 지금은 꼼수로 받았음.
+
+    #@pi = params[:id]
+
+    #@plan.sub_category.article
+
   end
-
-  def edit
-    @plan = Plan.find(params[:id])
-  end
-
-  def update
-    @plan = Plan.find(params[:id])
-
-    if @plan.update_attributes(params[:plan])
-      redirect_to :action => :index
-    else
-      render :action => :edit
-    end
-  end
-
-  def destroy
-    @plan = Plan.find(params[:id])
-    @plan.destroy
-    redirect_to :action => :index
-  end
-
 end

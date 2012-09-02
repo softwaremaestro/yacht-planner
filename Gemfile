@@ -5,6 +5,8 @@ gem 'sqlite3'
 gem 'paperclip'
 gem 'simple_form'
 gem 'inherited_resources'
+gem 'cocoon'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
