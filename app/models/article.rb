@@ -4,5 +4,9 @@ class Article < ActiveRecord::Base
 
   has_many :comments,  :dependent => :destroy
 
-end
+  # for paginate.
+  def self.of_sub_category s_id
+    where(:sub_category_id => s_id)
+  end
 
+end

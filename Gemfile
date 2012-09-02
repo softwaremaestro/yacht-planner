@@ -8,6 +8,9 @@ gem 'inherited_resources' # scaffolding in controllers
 
 gem 'cocoon'
 
+gem 'kaminari' # paginate
+gem 'bootstrap-kaminari-views' # bootstrap for kaminari
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

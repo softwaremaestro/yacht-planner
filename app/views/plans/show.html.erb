@@ -34,6 +34,9 @@
             <span style="font-weight:bold;"><marquee><%= @plan.title %></marquee></span>
           </div>
         </div>
+        <div>
+          <%= link_to content_tag(:i, "", class: "icon-cog"), edit_plan_path(@plan), class: "pull-right" %>
+        </div>
         <div style="margin:10px auto 0px; width:95%; color:gray;">
           <%= @plan.description %>
         </div>
@@ -44,20 +47,20 @@
         <table class="table">
           <thead>
           <tr>
-            <th>#</th>
             <th>카테고리</th>
+            <th style="width:30px;">상태</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td>0</td>
             <td><%= link_to "전체", "/plans/"+@plan.id.to_s %></td>
+            <td></td>
           </tr>
 
           <%  @plan.sub_categories.each.with_index do |sc,index| %>
             <tr>
-              <td><%= index+1  %></td>
               <td><%= link_to sc.title, "/plans/"+@plan.id.to_s+"/sub_category/"+sc.id.to_s %></td>
+              <td>미정</td>
             </tr>
           <% end %>
 
@@ -65,6 +68,15 @@
         </table>
       </div>
 
+      <!-- 멤버 사이드 -->
+      <div class="well well-small">
+        <div style="text-align: center;">
+          <input type="text" placeholder="identity@example.com">
+          <button class="btn">추가</button>
+        </div>
+      </div>
+
+      <!-- 최근 작업 -->
       <div class="well well-small">
         <div>최근 작업 : </div>
         <span id="process">working!</span>
@@ -100,6 +112,10 @@
 
             </tbody>
           </table>
+        </div>
+
+        <div style="text-align: center;">
+          <%= paginate @articles, :theme => 'twitter-bootstrap' %>
         </div>
       </div>
     </div>

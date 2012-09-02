@@ -1,7 +1,7 @@
 class Plan < ActiveRecord::Base
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
-  attr_accessible :cover,:title, :description, :public, :sub_categories_attributes
+  attr_accessible :cover,:title, :description, :public, :sub_categories_attributes, :invitable
 
   validates :title, :presence => true
 

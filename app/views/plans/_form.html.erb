@@ -1,17 +1,15 @@
 <%= simple_form_for(@plan, :html => {:class => 'form-horizontal', :multipart => true }) do |f| %>
-  <legend>
+  <legend style="font-weight: bold;">
     플랜 정보
   </legend>
 
-  <div class="field">
-    <%= f.file_field :cover %>
-  </div>
-
   <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
-  <%= f.input :title %>
+  <%= f.input :title, :input_html => {:class => "input-xlarge"} %>
   <%= f.input :description, :input_html => {:class => "input-xlarge"} %>
   <%= f.input :public %>
-  <legend>
+  <%= f.select :invitable, [["Admin Only", "admin"], ["Admin + User", "user"]], {:selected => @plan.invitable} %>
+
+  <legend style="font-weight: bold;">
     서브 카테고리 정보
   </legend>
   <div id='sub_categories'>
@@ -22,7 +20,17 @@
       <%= link_to_add_association '추가', f, :sub_categories, class: "btn btn-info btn-mini offset3" %>
     </div>
   </div>
+
+  <legend style="font-weight: bold;">
+     커버 이미지
+  </legend>
+
+  <div class="field">
+    <%= f.file_field :cover %>
+  </div>
+
   <div class="form-actions">
-    <%= f.button :submit, :class => "btn-primary" %>
+    <%= f.button :submit, value: "전송", :class => "btn-primary" %>
+    <%= link_to "취소", :back, class: "btn btn-danger", style: "color: white;" %>
   </div>
 <% end %>
