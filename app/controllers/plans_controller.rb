@@ -10,12 +10,13 @@ class PlansController < ApplicationController
 
 
     if @sub_category_id
-      @articles = @plan.sub_categories.find(@sub_category_id).articles.includes(:user).all(order:"updated_at desc")
+      @articles = @plan.sub_categories.find(@sub_category_id).articles.includes(:user,:comments).all(order:"updated_at desc")
     else
-      @articles = @plan.articles.includes(:user).all(order:"updated_at desc")
+      @articles = @plan.articles.includes(:user,:comments).all(order:"updated_at desc")
     end
 
     @article = Article.new
+    @comment = Comment.new
 
     # 라우팅 수정 해야함. 지금은 꼼수로 받았음.
 

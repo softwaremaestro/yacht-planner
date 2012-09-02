@@ -55,12 +55,10 @@
           </tr>
 
           <%  @plan.sub_categories.each.with_index do |sc,index| %>
-
             <tr>
               <td><%= index+1  %></td>
               <td><%= link_to sc.title, "/plans/"+@plan.id.to_s+"/sub_category/"+sc.id.to_s %></td>
             </tr>
-
           <% end %>
 
           </tbody>
@@ -73,7 +71,7 @@
       <div class="well well-small">
         <!-- 새글 -->
         <div>
-          <%= render 'plans/article_form' %>
+          <%= render 'articles/article_form' %>
 
 
         </div>
@@ -86,73 +84,12 @@
               <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="article_list">
 
             <% @articles.each do |a|  %>
 
-              <tr id="<%= dom_id(a) %>">
-                <td style="vertical-align: top;">
-                  <img src="http://cdn.btdot.com/3353/4f02ba6463f16.jpg.tn.jpg"
-                       style="width:64px; height:64px;" class="thumbnail">
-                </td>
-                <td style="padding-left:10px;">
-                  <span style="font-weight:bold; color:blue;"><%= a.user.try(:name) || "Guest" %></span>
-                  <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), article_path(a), confirm: "sure?", method: :delete,
-                              remote: true %>
-                  <p style="margin-top:10px;">
-                    <%= a.content %>
-                  </p>
+              <%= render 'articles/article' ,:a=>a %>
 
-                  <div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <i class="icon-remove pull-right"></i>
-                        <pre style="margin-top:5px;">내용 내용 내용 내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용  내용 </pre>
-                      </div>
-                    </div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <pre style="margin-top:5px;">내용 내용 내용 </pre>
-                      </div>
-                    </div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <pre style="margin-top:5px;">내용 내용 내용 </pre>
-                      </div>
-                    </div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <pre style="margin-top:5px;">내용 내용 내용 </pre>
-                      </div>
-                    </div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <pre style="margin-top:5px;">내용 내용 내용 </pre>
-                      </div>
-                    </div>
-                    <div style="padding-top:8px; ">
-                      <img src="http://www.playwares.com/xe/files/cache/thumbnails/325/095/023/200x200.crop.jpg" style="width:48px; float:left;" class="thumbnail">
-                      <div style="margin-left:65px;">
-                        <span style="color: #3B5998; font-weight: bold; font-size: 9pt;">이은총</span>
-                        <div style="margin-top:5px;">
-                          <textarea rows="1" class="span12"></textarea>
-                          <input type="submit">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
             <% end  %>
 
             </tbody>

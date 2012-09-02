@@ -13,6 +13,7 @@ Myapp::Application.routes.draw do
   devise_for :users
   resources :users, :only => [:show, :index]
   resources :articles
+  resources :comments
 
   #match ':controller/:action/:id/sub_category/:sub_category'
 
