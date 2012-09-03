@@ -26,7 +26,8 @@
         </td>
         <td><%= p.user.name %></td>
         <td>
-          <i class="icon-ok"></i>
+          <!--<i class="icon-ok"></i>-->
+          <%= render "plans/member_form" , :plan_id => p.plan_id, :user_id => p.user_id %>
           <%= link_to content_tag(:i,"", :class => "icon-remove"), plan_invitation_path(p), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
                       remote: true %>
         </td>

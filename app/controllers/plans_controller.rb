@@ -29,6 +29,8 @@ class PlansController < ApplicationController
 
     @planInvitations = PlanInvitation.includes(:user).find_all_by_plan_id(params[:id])
 
+    @planMember = PlanMember.new
+
 
   end
 
