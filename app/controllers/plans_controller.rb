@@ -22,4 +22,8 @@ class PlansController < ApplicationController
     # model_name for nilClass.
 
   end
+
+  def member
+    asdkjfalkflaksjdlkfja
+  end
 end
