@@ -1,1 +1,2 @@
-$("#<%=dom_id(@article)%>").slideUp();
+$("#<%=dom_id(@article)%>").remove();
+$("#process").css("color","red").html("글을 삭제했습니다.")

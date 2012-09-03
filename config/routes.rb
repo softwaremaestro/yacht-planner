@@ -14,6 +14,7 @@ Myapp::Application.routes.draw do
   resources :users, :only => [:show, :index]
   resources :articles
   resources :comments
+  resources :plan_invitations
 
   #match ':controller/:action/:id/sub_category/:sub_category'
 

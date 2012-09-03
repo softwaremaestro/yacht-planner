@@ -1,1 +1,38 @@
-<%= render 'plans/form' %>
+<div class="row">
+  <div class="span6">
+    <%= render 'plans/form' %>
+  </div>
+  <div class="span6">
+    <legend style="font-weight: bold;">
+      가입 신청 관리
+
+    </legend>
+
+    <table style="width:100%;">
+      <thead>
+      <tr>
+        <th style="width:60px;"></th>
+        <th></th>
+        <th style="width:100px;"></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @planInvitations.each do |p| %>
+      <tr id="<%= dom_id(p) %>">
+        <td>
+          <img src="<%= p.user.avatar.url %>"
+               style="width:50px" class="thumbnail">
+        </td>
+        <td><%= p.user.name %></td>
+        <td>
+          <i class="icon-ok"></i>
+          <%= link_to content_tag(:i,"", :class => "icon-remove"), plan_invitation_path(p), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
+                      remote: true %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

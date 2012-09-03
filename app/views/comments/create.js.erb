@@ -1,1 +1,3 @@
-$("#comment_list_<%= dom_id(@comment.article) %>").append("<%= escape_javascript(render :partial => "comment" , :locals => { :c =>@comment})%>");
+$("#comment_list_<%= dom_id(@comment.article) %>").append("<%= escape_javascript(render :partial => "comment" , :locals => { :c =>@comment})%>").slideDown();
+$("#comment_area_<%= @comment.article.id %>").val("");
+$("#process").css("color","green").html("새 댓글을 작성했습니다.")

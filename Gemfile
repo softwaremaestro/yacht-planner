@@ -2,11 +2,14 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 gem 'sqlite3'
 
-gem 'paperclip', "3.0.4" # image process gem
+gem 'paperclip', '3.0.4' # image process gem
 gem 'simple_form' # form layout, message toolkit
 gem 'inherited_resources' # scaffolding in controllers
 
 gem 'cocoon'
+
+gem 'kaminari' # paginate
+gem 'bootstrap-kaminari-views' # bootstrap for kaminari
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
