@@ -11,12 +11,12 @@
               <td style="width:48px;">
                 <img src="<%= current_user.avatar.url %>"
                      class="avatar" style="width:48px;">
-                <%#= 이미지 경로, 수정!  %>
               </td>
               <td style="padding-left:10px;">
                 <b style="font-size:14pt"><%= current_user.name %></b>
-                <hr style="margin:3px;">
-                <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a>
+                <br>
+                <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a><br>
+                <a href="#"><small style="font-size:8pt; color:gray;">플랜에서 탈퇴</small></a>
               </td>
             </tr>
           </table>
@@ -69,13 +69,15 @@
         </table>
       </div>
 
-      <!-- 멤버 사이드 -->
+      <!-- 초대 사이드 -->
+      <% # if (admin) or (user-auth && user) %>
       <div class="well well-small">
         <div style="text-align: center;">
-          <input type="text" placeholder="identity@example.com">
-          <button class="btn">추가</button>
+          <input type="text" placeholder="email@example.com">
+          <button class="btn">초대</button>
         </div>
       </div>
+      <% #end %>
 
       <!-- 최근 작업 -->
       <div class="well well-small">

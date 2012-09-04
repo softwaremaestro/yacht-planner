@@ -31,7 +31,7 @@ class PlanMembersController < ApplicationController
     @planMember.destroy
 
     respond_to do |format|
-      format.html { redirect_to plans_url }
+      format.html { redirect_to plans_url } # 수정 필요 + AJAX 처리
       format.js
     end
   end
