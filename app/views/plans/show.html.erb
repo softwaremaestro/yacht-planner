@@ -36,6 +36,7 @@
         </div>
         <div>
           <%= link_to content_tag(:i, "", class: "icon-cog"), edit_plan_path(@plan), class: "pull-right" %>
+          <%= link_to content_tag(:i, "", class: "icon-user"), plan_path(@plan)+"/members", class: "pull-right" %>
         </div>
         <div style="margin:10px auto 0px; width:95%; color:gray;">
           <%= @plan.description %>

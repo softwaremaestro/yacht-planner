@@ -13,7 +13,4 @@ class Plan < ActiveRecord::Base
   accepts_nested_attributes_for :sub_categories, :allow_destroy => true
   accepts_nested_attributes_for :articles, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
-
-  #attr_accessible :article
-
 end

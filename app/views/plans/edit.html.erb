@@ -5,15 +5,13 @@
   <div class="span6">
     <legend style="font-weight: bold;">
       가입 신청 관리
-
     </legend>
-
-    <table style="width:100%;">
+    <table style="width:100%;" class="table">
       <thead>
         <tr>
           <th style="width:60px;"></th>
           <th></th>
-          <th style="width:100px;"></th>
+          <th style="width:110px;"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,12 +22,18 @@
             <img src="<%= p.user.avatar.url %>"
                  style="width:50px" class="thumbnail">
           </td>
-          <td><%= p.user.name %></td>
           <td>
-            <!--<i class="icon-ok"></i>-->
-            <%= render "plans/member_form" , :plan_id => p.plan_id, :user_id => p.user_id %>
-            <%= link_to content_tag(:i,"", :class => "icon-remove"), plan_invitation_path(p), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
-                        remote: true %>
+            <div style="padding-left:10px;">
+              <div style="color: #3B5998; font-weight: bold;"><%= p.user.name %></div>
+              <div><%= p.user.email %></div>
+              <div><%= p.created_at %></div>
+            </div>
+          </td>
+          <td>
+            <div style="height:100%;">
+            <%= render "plans/member_form" , plan_id: p.plan_id, user_id: p.user_id %>
+            <%= link_to "거절", plan_invitation_path(p), class: "btn btn-danger", confirm: "이 글을 삭제 하시겠습니까?", method: :delete, remote: true %>
+            </div>
           </td>
         </tr>
       <% end %>
