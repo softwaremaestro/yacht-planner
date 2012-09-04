@@ -1,0 +1,6 @@
+<%= simple_form_for(@planMember, :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= f.input :plan_id, :as => :hidden, :input_html => { :value => plan_id }  %>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => user_id }  %>
+
+  <%= f.button :submit, value: "전송", :class => "" %>
+<% end %>

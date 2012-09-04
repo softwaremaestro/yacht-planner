@@ -4,40 +4,35 @@
   </div>
   <div class="span6">
     <legend style="font-weight: bold;">
-      가입신청 관리
+      가입 신청 관리
+
     </legend>
 
     <table style="width:100%;">
       <thead>
         <tr>
-          <th style="width:60px;"></td>
-          <th></td>
-          <th style="width:100px;"></td>
+          <th style="width:60px;"></th>
+          <th></th>
+          <th style="width:100px;"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+
+      <% @planInvitations.each do |p| %>
+        <tr id="<%= dom_id(p) %>">
           <td>
-            <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcQ5V3c2plCMuTvzBYPhsQnOFohlWOuWuu4PJxutDL0r7UI0iAAgDA&t=1"
+            <img src="<%= p.user.avatar.url %>"
                  style="width:50px" class="thumbnail">
           </td>
-          <td>태연</td>
+          <td><%= p.user.name %></td>
           <td>
-            <i class="icon-ok"></i>
-            <i class="icon-remove"></i>
+            <!--<i class="icon-ok"></i>-->
+            <%= render "plans/member_form" , :plan_id => p.plan_id, :user_id => p.user_id %>
+            <%= link_to content_tag(:i,"", :class => "icon-remove"), plan_invitation_path(p), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
+                        remote: true %>
           </td>
         </tr>
-        <tr>
-          <td>
-            <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcQ5V3c2plCMuTvzBYPhsQnOFohlWOuWuu4PJxutDL0r7UI0iAAgDA&t=1"
-                 style="width:50px" class="thumbnail">
-          </td>
-          <td>태연</td>
-          <td>
-            <i class="icon-ok"></i>
-            <i class="icon-remove"></i>
-          </td>
-        </tr>
+      <% end %>
       </tbody>
     </table>
   </div>

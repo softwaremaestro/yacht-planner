@@ -19,11 +19,25 @@ class PlansController < ApplicationController
 
     @article = Article.new
     @comment = Comment.new
+
     # model_name for nilClass.
 
   end
 
-  def member
-    asdkjfalkflaksjdlkfja
+  def edit
+    @plan= Plan.find(params[:id])
+
+    @planInvitations = PlanInvitation.includes(:user).find_all_by_plan_id(params[:id])
+
+    @planMember = PlanMember.new
+
+
   end
+
+  def index
+    @planInvitation = PlanInvitation.new
+    @plans= Plan.all
+
+  end
+
 end
