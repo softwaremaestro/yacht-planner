@@ -21,4 +21,5 @@ Myapp::Application.routes.draw do
 
 
   match 'plans/:id/sub_category/:sub_category' => 'plans#show', :constraints => {:sub_category => /\d+/}
+  match 'plans/:id/members' => 'plan_members#show', constraints: {id: /\d+/}
 end
