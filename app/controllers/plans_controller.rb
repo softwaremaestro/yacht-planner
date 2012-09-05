@@ -11,6 +11,10 @@ class PlansController < ApplicationController
     @articles = @plan.articles.order("updated_at desc").includes(:user, :comments).page(params[:page]).per(2)
     @articles = @articles.of_sub_category(@sub_category_id) unless @sub_category_id.nil?
 
+
+
+
+
     @article = Article.new
     @comment = Comment.new
 

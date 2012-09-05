@@ -19,9 +19,15 @@
 #article2 = Article.create! :content =>'test2', :plan_id =>'2',:sub_category_id=>'2',:user_id=>'2'
 #puts 'New article created: ' << article2.content
 
-puts 'SETTING UP DEFAULT comment'
-comment = Comment.create! :content =>'test1', :article_id=>'1',:user_id=>'1'
-puts 'New comment created: ' << comment.content
-comment2 = Comment.create! :content =>'test2', :article_id=>'2',:user_id=>'2'
-puts 'New comment created: ' << comment2.content
+#puts 'SETTING UP DEFAULT comment'
+#comment = Comment.create! :content =>'test1', :article_id=>'1',:user_id=>'1'
+#puts 'New comment created: ' << comment.content
+#comment2 = Comment.create! :content =>'test2', :article_id=>'2',:user_id=>'2'
+#puts 'New comment created: ' << comment2.content
+
+puts 'SETTING UP DEFAULT newsfeed'
+newsfeed = Newsfeed.create! :plan_id => '1', :article_id=>'1',:user_id=>'1',:sub_category_id=>'1'
+puts 'New comment created: '
+newsfeed2 = Newsfeed.create! :plan_id => '2', :article_id=>'2',:user_id=>'2',:sub_category_id=>'2'
+puts 'New comment created: '
 
