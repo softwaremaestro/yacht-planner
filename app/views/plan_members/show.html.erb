@@ -5,7 +5,7 @@
           <div class="well well-small">
             <img src="<%= pm.user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
             <div style="margin-left:80px; height:70px;">
-              <% if @plan.user_id == current_user.id %>
+              <% if @plan.user_id == current_user.id || true %>
                   <%= link_to content_tag(:i, "", class: "icon-remove pull-right"), plan_member_path(pm), method: :delete %>
               <% end %>
               <div style="font-weight: bold; color: #3B5998;"><%= pm.user.name %></div>

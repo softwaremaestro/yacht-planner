@@ -27,13 +27,31 @@ class PlanMembersController < ApplicationController
   end
 
   def destroy
-    @planMember = PlanMember.find(params[:id])
-    @planMember.destroy
 
-    respond_to do |format|
-      format.html { redirect_to plans_url }
-      format.js
+    @planMember = PlanMember.find(params[:id])
+    #스코프 처리 해줘야 함. 해당 플랜의 어드민 일 경우, 본인일 경우, 삭제.
+
+    @plan = Plan.find(@planMember.plan_id)
+
+      if @plan.user_id==current_user.id
+        @planMember.destroy
+
+        respond_to do |format|
+          format.html { redirect_to "/plans/"+@planMember.plan_id.to_s + "/members" }
+          format.js
+        end
+      elsif @planMember.user_id==current_user.id
+        @planMember.destroy
+
+        respond_to do |format|
+          format.html { redirect_to "/plans/"+@planMember.plan_id.to_s }
+          format.js
+        end
+    else
+      return
     end
+
+
   end
 
 end
