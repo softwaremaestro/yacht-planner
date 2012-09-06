@@ -22,6 +22,7 @@
                 <%= current_user.created_at %>
               </div>
               <div style="margin-top:5px;">
+
                 은총이형이 맥북 받아옴<br>
                 은총이형이 맥북 받아옴<br>
                 은총이형이 맥북 받아옴<br>
@@ -33,6 +34,40 @@
                 은총이형이 맥북 받아옴
               </div>
 
+              <div id="comment_box" style="margin-top:10px;">
+                <div id="comment_1" style="min-height: 50px;;">
+                  <img src="<%= current_user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                  <div style="margin-left:60px;">
+                    <div><span style="color:#3B5998; font-weight: bold;"><%= current_user.name %></span></div>
+                    <pre style="margin-top:5px;">댓글1</pre>
+                  </div>
+                </div>
+
+                <div id="comment_2" style="min-height: 50px;;">
+                  <img src="<%= current_user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                  <div style="margin-left:60px;">
+                    <div><span style="color:#3B5998; font-weight: bold;"><%= current_user.name %></span></div>
+                    <pre style="margin-top:5px;">댓글2</pre>
+                  </div>
+                </div>
+
+                <div id="comment_3" style="min-height: 50px;;">
+                  <img src="<%= current_user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                  <div style="margin-left:60px;">
+                    <div><span style="color:#3B5998; font-weight: bold;"><%= current_user.name %></span></div>
+                    <pre style="margin-top:5px;">댓글3</pre>
+                  </div>
+                </div>
+              </div>
+
+              <div id="comment_form">
+                <img src="<%= current_user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                <div style="margin-left:60px; min-height: 50px;">
+                  <div style="margin-bottom: 5px;"><span style="color:#3B5998; font-weight: bold;"><%= current_user.name %></span></div>
+                  <textarea rows="1" placeholder="댓글을 써 보세요.." style=""></textarea>
+                  <input type="button" value="전송" class="btn">
+                </div>
+              </div>
             </div>
           </div>
 
