@@ -26,7 +26,32 @@
               </div>
               <div style="margin-top:5px;">
                 <%= nf.article.content %>
-                <%= nf.article.comments %>
+
+                <div id="comment_list_<%= dom_id(nf.article)%>" style="margin-top:10px;">
+                  <% nf.article.comments.each do |c| %>
+
+<!--                  <div id="comment_1" style="min-height: 50px;;">
+                    <img src="<%= c.user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                    <div style="margin-left:60px;">
+                      <div><span style="color:#3B5998; font-weight: bold;"><%= c.user.name %></span></div>
+                      <pre style="margin-top:5px;"><%= c.content %></pre>
+                    </div>
+                  </div>-->
+                      <%= render 'comments/comment', :c => c %>
+                  <% end %>
+                </div>
+
+                <!--<div id="comment_form">
+                  <img src="<%= current_user.avatar.url %>" class="thumbnail" style="width:40px; float:left;">
+                  <div style="margin-left:60px; min-height: 50px;">
+                    <div style="margin-bottom: 5px;"><span style="color:#3B5998; font-weight: bold;"><%= current_user.name %></span></div>
+                    <textarea rows="1" placeholder="댓글을 써 보세요.." style=""></textarea>
+                    <input type="button" value="전송" class="btn">
+                  </div>
+                </div>
+                -->
+                <%= render 'comments/comment_form' ,:a => nf.article %>
+
 
               </div>
 

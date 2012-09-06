@@ -16,4 +16,7 @@ class Plan < ActiveRecord::Base
 
   #attr_accessible :article
 
+
+  belongs_to :user
+
 end
