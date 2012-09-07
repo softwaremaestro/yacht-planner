@@ -12,9 +12,6 @@ class PlansController < ApplicationController
     @articles = @articles.of_sub_category(@sub_category_id) unless @sub_category_id.nil?
 
 
-
-
-
     @article = Article.new
     @comment = Comment.new
 
@@ -40,4 +37,19 @@ class PlansController < ApplicationController
 
   end
 
+  def create
+    #플랜 만들기가 안됨, 수정 필요함!!
+    @plan = Plan.new(params[:plan])
+    @plan.user_id = current_user.id
+
+    respond_to do |format|
+      if @plan.save
+        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @plan.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
 end

@@ -6,9 +6,12 @@ class ArticlesController < ApplicationController
 
     if @article.save
       #nf = Newsfeed.new(@article)
-      nf = Newsfeed.new({:article_id=>@article.id,:plan_id=>@article.plan_id,:sub_category_id=>@article.sub_category,:user_id=>@article.user_id})
+      Newsfeed.feed(@article)
 
-      nf.save
+      #ntf = Notification.new :article_id => article.id , :plan_id => article.plan_id ,:user_id => article.plan.user_id, :sub_category_id => article.sub_category_id
+      #새글에 노티피 해주는건, 뉴스피드에서 가져오기.
+      #ntf.save
+
       respond_to do |format|
         format.html {redirect_to "/plans/"+@article.plan_id.to_s, notice: 'article was successfully created.' }
         format.js

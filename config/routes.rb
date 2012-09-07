@@ -16,6 +16,7 @@ Myapp::Application.routes.draw do
   resources :comments
   resources :plan_invitations
   resources :plan_members
+  resources :notifications
 
   #match ':controller/:action/:id/sub_category/:sub_category'
 
