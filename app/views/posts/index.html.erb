@@ -1,27 +1,99 @@
-<h1>Listing posts</h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="row-fluid">
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.user_id %></td>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="row-fluid">
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="well well-small">
+        <img src="<%= current_user.avatar.url %>" style="width:60px; float:left;" class="thumbnail">
+        <div style="margin-left:80px; height:70px;">
+          <i class="icon-remove pull-right"></i>
+          <div style="font-weight: bold; color: #3B5998;"><%= current_user.name %></div>
+          <div style="margin-top:15px;"><%= current_user.email %></div>
+          <div style="color:gray;">2012-09-03 가입</div>
+        </div>
+      </div>
+    </div>
 
-<br />
-
-<%= link_to 'New Post', new_post_path %>
+  </div>
+</div>

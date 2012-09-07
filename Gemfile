@@ -6,7 +6,9 @@ gem 'paperclip'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'cocoon'
-
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'omniauth-facebook'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

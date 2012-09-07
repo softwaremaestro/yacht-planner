@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902074814) do
+ActiveRecord::Schema.define(:version => 20120907071225) do
 
   create_table "articles", :force => true do |t|
     t.integer  "plan_id"
@@ -30,6 +30,28 @@ ActiveRecord::Schema.define(:version => 20120902074814) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "plan_invitations", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.integer  "invite_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "plan_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "plans", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -41,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20120902074814) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "invitable"
   end
 
   create_table "posts", :force => true do |t|
@@ -87,6 +110,9 @@ ActiveRecord::Schema.define(:version => 20120902074814) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "img_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
