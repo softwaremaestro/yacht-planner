@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
 
     if @article.save
+      nf = Newsfeed.new({:article_id=>@article.id,:plan_id=>@article.plan_id,:sub_category_id=>@article.sub_category,:user_id=>@article.user_id})
+      nf.save
+
       respond_to do |format|
         format.html {redirect_to "/plans/"+@article.plan_id.to_s, notice: 'article was successfully created.' }
         format.js

@@ -27,13 +27,28 @@ class PlanMembersController < ApplicationController
   end
 
   def destroy
-    @planMember = PlanMember.find(params[:id])
-    @planMember.destroy
 
-    respond_to do |format|
-      format.html { redirect_to plans_url } # 수정 필요 + AJAX 처리
-      format.js
+    @planMember = PlanMember.find(params[:id])
+
+
+    @plan = Plan.find(@planMember.plan_id)
+
+    if @plan.user_id==current_user.id
+      @planMember.destroy
+
+      respond_to do |format|
+        format.html { redirect_to "/plans/"+@planMember.plan_id.to_s + "/members" }
+        format.js
+      end
+    elsif @planMember.user_id==current_user.id
+      @planMember.destroy
+
+      respond_to do |format|
+        format.html { redirect_to "/plans/"+@planMember.plan_id.to_s }
+        format.js
+      end
+    else
+      return
     end
   end
-
 end

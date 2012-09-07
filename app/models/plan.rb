@@ -4,13 +4,16 @@ class Plan < ActiveRecord::Base
   attr_accessible :cover,:title, :description, :public, :sub_categories_attributes, :invitable
 
   validates :title, :presence => true
+  validates :sub_categories, :length => {:minimum => 3}
 
   has_many :sub_categories, :dependent => :destroy
   has_many :articles, :through => :sub_categories
   has_many :comments, :through => :articles
 
-  validates :sub_categories, :length => {:minimum => 3}
   accepts_nested_attributes_for :sub_categories, :allow_destroy => true
   accepts_nested_attributes_for :articles, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
+
+  belongs_to :user
+
 end
