@@ -7,7 +7,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.integer :article_id
       t.integer :comment_id
       t.integer :c_type
-      t.boolean :view
+      t.boolean :view , :null => false, :default => false
       t.timestamps
     end
   end

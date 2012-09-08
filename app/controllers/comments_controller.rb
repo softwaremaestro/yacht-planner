@@ -6,8 +6,16 @@ class CommentsController < ApplicationController
     if @comment.save
 
       #아티클에 코맨트를 단 유저들 리스트를, 중복 제거하여 뽑아와서 for문을 돌며, 날려줌.
-      #ntf = Notification.new :article_id => article.id , :plan_id => article.plan_id ,:user_id => article.plan.user_id     -> 1
-      #ntf.save
+      chash={}
+      @comment.article.comments.map{|c| chash[c.user_id]=c}
+      chash.each do |key,value|
+        if value.user.id==@comment.user.id
+          next
+        end
+        ntf = Notification.new :article_id => value.article.id , :plan_id => value.article.plan_id , :sub_category_id => value.article.sub_category_id,:user_id => value.user_id, :c_type=>1     #-> 1
+        ntf.save
+
+      end
 
       #아티클을 쓴 사람에게, 노티파이를 날려줌.
       article = @comment.article

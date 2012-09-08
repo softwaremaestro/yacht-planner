@@ -9,7 +9,7 @@
       <div class="well well-small">
         <legend style="font-weight: bold;">notification</legend>
         <div id="feed-list">
-          <%= @notifications.inspect %>
+
           <% @notifications.each do |ntf| %>
 
               <div style="border-bottom: 1px solid #ddd; padding:10px;">
@@ -19,7 +19,7 @@
                     <span style="color:#3B5998; font-weight: bold;"><%= ntf.user.name %></span>
                     #
                     <span style="color:brown; font-weight:bold"><%= ntf.plan.try(:title) || "Guest" %></span>
-                    <span style="color:gray">>> <%= ntf.sub_category.title %></span>
+                    <span style="color:gray">>> <%= ntf.sub_category.try(:title) || "Guest" %></span>
                   </div>
                   <div>
                     <%= ntf.created_at %>
@@ -33,7 +33,7 @@
                         내가 <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">댓글을 단 글에</a> <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">댓글이</a> 달렸습니다.
                         <%# 수정 필요. 글, 댓글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
                     <% when 2 %>
-                        <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>"><%= ntf.plan.try(:title) || "Guest" %>그룹에</a> <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">새글이</a> 등록 되었습니다.
+                        <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>"><%= ntf.plan.try(:title) || "Guest" %>그룹에</a> <a href="<%="/plans/" + ntf.plan.id.to_s %>">새글이</a> 등록 되었습니다.
                         <%# 수정 필요. 글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
                     <% when 3 %>
                         <a href="<%="/plans/" + ntf.plan.id.to_s %>"><%= ntf.plan.try(:title) || "Guest" %>그룹에</a> <%= ntf.article.user.try(:name) || "Guest" %>님이 가입 신청을 했습니다.

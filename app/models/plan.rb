@@ -10,12 +10,12 @@ class Plan < ActiveRecord::Base
   has_many :comments, :through => :articles
 
   validates :sub_categories, :length => {:minimum => 3}
+  # 3개 이하면 안만들어짐. 3개 이하일때, 에러를 어떻게 보내주지????
   accepts_nested_attributes_for :sub_categories, :allow_destroy => true
   accepts_nested_attributes_for :articles, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
 
   #attr_accessible :article
-
 
   belongs_to :user
 

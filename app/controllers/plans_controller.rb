@@ -46,7 +46,7 @@ class PlansController < ApplicationController
       if @plan.save
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new" , status: :unprocessable_entity }
         format.json { render json: @plan.errors, status: :unprocessable_entity }
       end
     end

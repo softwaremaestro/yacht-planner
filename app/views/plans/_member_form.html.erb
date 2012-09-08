@@ -1,4 +1,4 @@
-<%= simple_form_for(@planMember, :html => {:class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@planMember, remote: true, :html => {:class => 'form-horizontal' }) do |f| %>
     <%= f.input :plan_id, :as => :hidden, :input_html => { :value => plan_id }  %>
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => user_id }  %>
     <%= f.button :submit, value: "수락", :class => "" %>

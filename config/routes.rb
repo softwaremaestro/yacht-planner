@@ -16,11 +16,15 @@ Myapp::Application.routes.draw do
   resources :comments
   resources :plan_invitations
   resources :plan_members
-  resources :notifications
+  resources :notifications, :only => :index
 
   #match ':controller/:action/:id/sub_category/:sub_category'
 
 
   match 'plans/:id/sub_category/:sub_category' => 'plans#show', :constraints => {:sub_category => /\d+/}
   match 'plans/:id/members' => 'plan_members#show', constraints: {id: /\d+/}
+
+  match 'notifications/:id' => 'notifications#view', constraints: {id: /\d+/}
+
+
 end

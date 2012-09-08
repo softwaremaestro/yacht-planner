@@ -1,3 +1,4 @@
+#encoding: utf-8
 class PlanMembersController < ApplicationController
 
   def create
@@ -5,8 +6,13 @@ class PlanMembersController < ApplicationController
 
     if @planMember.save
       PlanInvitation.where(plan_id: @planMember.plan_id,user_id: @planMember.user_id).each do |p|
+        @planInvitation =p
         p.destroy
       end
+
+      article = Article.create! :content =>(current_user.name + '님이 가입 했습니다.'), :plan_id =>@planMember.plan_id,:sub_category_id=>'1',:user_id=>@planMember.user_id
+      Newsfeed.feed(article)
+
       respond_to do |format|
         format.js
       end

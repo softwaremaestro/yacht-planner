@@ -19,7 +19,7 @@
                 <span style="color:#3B5998; font-weight: bold;"><%= nf.user.name %></span>
                 #
                 <span style="color:brown; font-weight:bold"><%= nf.plan.title %></span>
-                <span style="color:gray">>> <%= nf.sub_category.title %></span>
+                <span style="color:gray">>> <%= nf.sub_category.try(:title) || "guest" %></span>
               </div>
               <div>
                 <%= nf.created_at %>

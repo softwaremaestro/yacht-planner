@@ -10,7 +10,7 @@ class Newsfeed < ActiveRecord::Base
 #  has_many :sub_categories ,:through => :plans
 #  has_many :articles ,:through => :sub_categories
 #  has_many :comments ,:through => :articles
-  def feed(article)
+  def self.feed(article)
     nf = self.new({:article_id=>article.id,:plan_id=>article.plan_id,:sub_category_id=>article.sub_category,:user_id=>article.user_id})
     nf.save
   end
