@@ -7,38 +7,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar, :provider, :uid, :img_url
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar, :provider, :uid, :img_url, :access_token
 
   has_attached_file :avatar, :styles => { :medium => "150x150>", :thumb => "50x50>" }
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.info
+    image_url = data.image.gsub("square","large")
     if user = User.find_by_email(data.email)
       if data.image.present?    # update the user's image every time he logs in
-        user.update_attribute(:img_url, data.image)
+        user.update_attribute(:img_url, image_url)
       end
       user
     else # Create a user with a stub password.
-      #self.avatar = URI.parse(data.image)
-      #self.avatar_file_name == "avatar.png"
-      #self.avatar_content_type == "image/png"
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :img_url => data.image)
+      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :img_url => image_url, :access_token => access_token.credentials.token)
     end
   end
-
-  #def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-  #  user = User.where(:provider => auth.provider, :uid => auth.uid).first
-  #  unless user
-  #    user = User.create(name:auth.extra.raw_info.name,
-  #                       provider:auth.provider,
-  #                       uid:auth.uid,
-  #                       email:auth.info.email,
-  #                       password:Devise.friendly_token[0,20],
-  #                       img_url:auth.info.image
-  #    )
-  #  end
-  #  user
-  #end
 
   def self.new_with_session(params, session)
     super.tap do |user|

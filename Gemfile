@@ -9,6 +9,7 @@ gem 'cocoon'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'omniauth-facebook'
+gem 'koala'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907071225) do
+ActiveRecord::Schema.define(:version => 20120908101350) do
 
   create_table "articles", :force => true do |t|
     t.integer  "plan_id"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20120907071225) do
     t.string   "provider"
     t.string   "uid"
     t.string   "img_url"
+    t.string   "access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

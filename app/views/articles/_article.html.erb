@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(a) %>">
   <td style="vertical-align: top;">
-    <img src="<%= a.user.avatar.url %>"
+    <img src="<%= a.user.img_url %>"
          style="width:64px; height:64px;" class="thumbnail">
   </td>
   <td style="padding-left:10px;">
@@ -18,7 +18,7 @@
     </div>
 
     <div style="padding-top:8px; ">
-      <img src="<%= current_user.avatar.url %>" style="width:48px; float:left;" class="thumbnail">
+      <img src="<%= current_user.img_url %>" style="width:48px; float:left;" class="thumbnail">
       <div style="margin-left:65px;">
         <span style="color: #3B5998; font-weight: bold; font-size: 9pt;"><%= current_user.name %></span>
         <div style="margin-top:5px;">
