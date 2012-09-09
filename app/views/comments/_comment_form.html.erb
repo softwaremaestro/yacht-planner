@@ -1,9 +1,9 @@
-<%= simple_form_for(@comment, :html => {:class => 'form-horizontal' },remote: true ) do |f| %>
+<%= simple_form_for(@comment, :html => {:class => 'form-horizontal',:id => "comment_form_"+a.id.to_s },remote: true ) do |f| %>
     <%#= f.input :title, :collection => ["1", "2", "3"], :as => :radio_buttons %>
     <%= f.input :article_id, :as => :hidden, :input_html => { :value => a.id }  %>
     <%#= 랜더링 할때, a를 가져와야함.  %>
 
-    <%= f.text_area :content, :rows => "1", :placeholder => "댓글을 쓰세요..", id: "comment_area_"+a.id.to_s %>
-    <%= f.button :submit, :class => "btn btn-primary", style: "", :value => "등록" %>
+    <%= f.text_area :content, :rows => "1", :placeholder => "댓글을 쓰세요..", id: "comment_area_"+a.id.to_s ,:onkeydown => "if(event.keyCode==13){$('#comment_form_"+a.id.to_s+"').submit()}" %>
+    <!--<%= f.button :submit, :class => "btn btn-primary", style: "", :value => "등록" %>-->
 
 <% end %>

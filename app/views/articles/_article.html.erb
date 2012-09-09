@@ -8,6 +8,11 @@
     <%= link_to content_tag(:i,"", :class => "icon-remove pull-right"), article_path(a), confirm: "이 글을 삭제 하시겠습니까?", method: :delete,
                 remote: true %>
     <p style="margin-top:10px;">
+
+      <% if a.image.url != "/images/original/missing.png" %>
+          <img src="<%= a.image.url %>">
+      <% end %>
+
       <%= a.content %>
     </p>
 

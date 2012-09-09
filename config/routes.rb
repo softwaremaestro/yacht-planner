@@ -26,5 +26,7 @@ Myapp::Application.routes.draw do
 
   match 'notifications/:id' => 'notifications#view', constraints: {id: /\d+/}
 
+  #match 'plan_invitations/:id' => 'plan_invitations#invite', constraints: {id: /\d+/}
+
 
 end

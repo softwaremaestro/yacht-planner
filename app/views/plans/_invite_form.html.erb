@@ -1,0 +1,6 @@
+<%= simple_form_for(@planInvitation, remote: true, :html => {:class => 'form-horizontal' }) do |f| %>
+    <%= f.input :plan_id, :as => :hidden, :input_html => { :value => p.id }  %>
+    <input type="text" name="plan_invitation[email]" placeholder="email@example.com">
+
+    <%= f.button :submit, value: "초대", :class => "btn" %>
+<% end %>

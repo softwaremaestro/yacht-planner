@@ -32,7 +32,8 @@
             <td>
               <div style="height:100%;">
                 <%= render "plans/member_form" , plan_id: p.plan_id, user_id: p.user_id %>
-                <%= link_to "거절", plan_invitation_path(p), class: "btn btn-danger", confirm: "이 글을 삭제 하시겠습니까?", method: :delete, remote: true %>
+
+                <%= link_to "거절", plan_invitation_path(p), class: "btn btn-danonfirm: "이 글을 삭제 하시겠습니까?", method: :delete, remote: true %>
               </div>
             </td>
           </tr>

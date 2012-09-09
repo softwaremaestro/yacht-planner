@@ -17,6 +17,7 @@
                 <br>
                 <a href="<%= edit_user_registration_path %>"><small style="font-size:9pt; color:gray;">내 정보 수정</small></a><br>
                 <!--<a href="#"><small style="font-size:8pt; color:gray;">플랜에서 탈퇴</small>-->
+
                   <%= link_to "플랜에서 탈퇴", plan_member_path(@planMember), confirm: "정말 탈퇴 하시겠습니까?", method: :delete %>
               </td>
             </tr>
@@ -61,9 +62,9 @@
             <td></td>
           </tr>
 
-          <%  @plan.sub_categories.each.with_index do |sc,index| %>
+          <%  @sub_categories.each.with_index do |sc,index| %>
               <tr>
-                <td><%= link_to sc.title, "/plans/"+@plan.id.to_s+"/sub_category/"+sc.id.to_s %></td>
+                <td><%= link_to sc[0], "/plans/"+@plan.id.to_s+"/sub_category/"+sc[1].to_s %></td>
                 <td>미정</td>
               </tr>
           <% end %>
@@ -76,8 +77,9 @@
       <% # if (admin) or (user-auth && user) %>
       <div class="well well-small">
         <div style="text-align: center;">
-          <input type="text" placeholder="email@example.com">
-          <button class="btn">초대</button>
+
+          <%= render 'plans/invite_form' , :p => @plan %>
+
         </div>
       </div>
       <% #end %>

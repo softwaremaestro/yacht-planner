@@ -12,35 +12,41 @@
 
           <% @notifications.each do |ntf| %>
 
-              <div style="border-bottom: 1px solid #ddd; padding:10px;">
-                <img src="<%= current_user.avatar.url %>" style="width:50px; float:left;" class="thumbnail">
-                <div style="margin-left:70px;">
-                  <div>
-                    <span style="color:#3B5998; font-weight: bold;"><%= ntf.user.name %></span>
-                    #
-                    <span style="color:brown; font-weight:bold"><%= ntf.plan.try(:title) || "Guest" %></span>
-                    <span style="color:gray">>> <%= ntf.sub_category.try(:title) || "Guest" %></span>
-                  </div>
-                  <div>
-                    <%= ntf.created_at %>
-                  </div>
-                  <div style="margin-top:5px;">
-                    <% case ntf.c_type %>
-                    <% when 0 %>
-                        내 <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">글에</a> <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">댓글이</a> 달렸습니다.
-                        <%# 수정 필요. 글, 댓글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
-                    <% when 1 %>
-                        내가 <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">댓글을 단 글에</a> <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>">댓글이</a> 달렸습니다.
-                        <%# 수정 필요. 글, 댓글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
-                    <% when 2 %>
-                        <a href="<%="/plans/" + ntf.plan.try(:id).to_s || 0.to_s %>"><%= ntf.plan.try(:title) || "Guest" %>그룹에</a> <a href="<%="/plans/" + ntf.plan.id.to_s %>">새글이</a> 등록 되었습니다.
-                        <%# 수정 필요. 글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
-                    <% when 3 %>
-                        <a href="<%="/plans/" + ntf.plan.id.to_s %>"><%= ntf.plan.try(:title) || "Guest" %>그룹에</a> <%= ntf.article.user.try(:name) || "Guest" %>님이 가입 신청을 했습니다.
-                    <% end %>
-                  </div>
+                  <div style="border-bottom: 1px solid #ddd; padding:10px;">
+                    <img src="<%= current_user.avatar.url %>" style="width:50px; float:left;" class="thumbnail">
+                    <div style="margin-left:70px;">
+                      <div>
+                        <span style="color:#3B5998; font-weight: bold;"><%= ntf.user.name %></span>
+                        #
+                        <span style="color:brown; font-weight:bold"><%= ntf.plan.try(:title) || "Guest" %></span>
+                        <span style="color:gray">>> <%= ntf.sub_category.try(:title) || "Guest" %></span>
+                      </div>
+                      <div>
+                        <%= ntf.created_at %>
+                      </div>
+                      <div style="margin-top:5px;">
+                        <% case ntf.c_type %>
+                        <% when 0 %>
+                            내 <a href="<%="/plans/" + ntf.plan.id.to_s + "?plink=" + ntf.article_id.to_s %>">글에</a> <a href="<%="/plans/" + ntf.plan.id.to_s + "?plink=" + ntf.article_id.to_s %>">댓글이</a> 달렸습니다.
+                            <%# 수정 필요. 글, 댓글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
+                        <% when 1 %>
+                            내가 <a href="<%="/plans/" + ntf.plan.id.to_s + "?plink=" + ntf.article_id %>">댓글을 단 글에</a> <a href="<%="/plans/" + ntf.plan.id.to_s + "?plink=" + ntf.article_id %>">댓글이</a> 달렸습니다.
+                            <%# 수정 필요. 글, 댓글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
+                        <% when 2 %>ㅣ
+                            <a href="<%="/plans/" + ntf.plan.id.to_s + "?plink=" + ntf.article_id %>">'<%= ntf.plan.title %>' 그룹에</a> <a href="<%="/plans/" + ntf.plan.id.to_s %>">새글이</a> 등록 되었습니다.
+                            <%# 수정 필요. 글로 바로가기 만들어야 함. 현재는, 해당 플랜으로 이동! %>
+                        <% when 3 %>
+                            <a href="<%="/plans/" + ntf.plan.id.to_s %>">'<%= ntf.plan.title  %>' 그룹에</a> <%= ntf.article.user.try(:name) || "Guest" %>님이 가입 신청을 했습니다.
+                        <% when 4 %>
+                            <a href="<%="/plans/" + ntf.plan.id.to_s %>">'<%= ntf.plan.title  %>' 그룹의</a> <%= ntf.article.user.try(:name) || "Guest" %>님으로 부터
+                            <% if ntf.plan_invitation %>
+                                [<%= render "plans/member_form" , plan_id: ntf.plan.id, user_id: ntf.user_id %>/<%= link_to "거절", plan_invitation_path(ntf.plan_invitation), class: "btn btn-danger", confirm: "초대를 거절 하시겠습니까?", method: :delete, remote: true %>]
+                            <% end %>
+                            초대를 받았습니다.
+                      <% end %>
+                      </div>
 
-                </div>
+                    </div>
               </div>
 
           <% end %>
