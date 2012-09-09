@@ -2,4 +2,32 @@
 
 <%= render 'plans/form' %>
 
+<div>
+  <% @user=User.find(current_user.id) %>
+  <% @graph = Koala::Facebook::API.new(@user.access_token) %>
+  <% profile = @graph.get_object("me")
+     groups = @graph.get_connections("me", "groups") %>
+  <table>
+  <% groups.each do |result| %>
+
+      <tr>
+        <td>
+          <% group_detail = @graph.get_object(result["id"]) %>
+          <img src ="<%= group_detail["icon"] %>">
+          <span id="fb_title_<%= result["id"] %>"><%= result["name"] %></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="btn"
+                  onclick="
+                  $('#plan_title').val($('#fb_title_<%= result["id"] %>').html());
+                  $('#plan_description').val('<%= escape_javascript(group_detail["description"]) %>');
+                  ">정보 가져오기</button>
+        </td>
+      </tr>
+  <% end %>
+</table>
+</div>
+
 <%=  link_to '취소', plans_path, class:"btn btn-danger", style: "color:white" %>

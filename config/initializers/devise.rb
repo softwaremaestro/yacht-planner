@@ -232,5 +232,5 @@ Devise.setup do |config|
 
   #facebook
   require 'omniauth-facebook'
-  config.omniauth :facebook, "486632618022473", "6426bf2dce15c63154774862335d9179"
+  config.omniauth :facebook, "486632618022473", "6426bf2dce15c63154774862335d9179", {:scope => "email, user_groups"}
 end

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
       if data.image.present?    # update the user's image every time he logs in
         user.update_attribute(:img_url, image_url)
       end
+      user.update_attribute(:access_token, access_token.credentials.token)  # access token has to be updated
       user
     else # Create a user with a stub password.
       User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :img_url => image_url, :access_token => access_token.credentials.token)
