@@ -1,0 +1,1 @@
+$("#like_<%= dom_id(@article) %>").html('<%= link_to content_tag(:i,"", :class => "icon-thumbs-up"), like_article_url(@article), method: :get, remote: true %><%= @article.like_articles_count %>');

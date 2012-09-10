@@ -14,6 +14,14 @@
       <% end %>
 
       <%= a.content %>
+
+      <!-- 수정한 부분 !! -->
+
+      <div id="like_<%= dom_id(a) %>" class="pull-right">
+      <%= link_to content_tag(:i,"", :class => "icon-thumbs-up"), like_article_url(a), method: :get, remote: true %><%= a.like_articles_count %>
+      </div>
+      <!-- 수정한 부분 !! -->
+
     </p>
 
     <div id="comment_list_<%= dom_id(a)%>">

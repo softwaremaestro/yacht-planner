@@ -17,6 +17,8 @@ Myapp::Application.routes.draw do
   resources :plan_invitations
   resources :plan_members
   resources :notifications, :only => :index
+  resources :like_articles
+
 
   #match ':controller/:action/:id/sub_category/:sub_category'
 
