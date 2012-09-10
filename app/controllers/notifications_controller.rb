@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
 
     @users = User.all
   #  @newsfeeds = Newsfeed.order("updated_at desc").includes(:user,{:article => {:comments => :user}},:sub_category).find_all_by_plan_id([ps])
-    @notifications = Notification.order("updated_at desc").includes(:user,{:article => {:comments => :user}},:sub_category,{:comment => :user},:plan_invitation).find_all_by_user_id(current_user.id)
+    @notifications = Notification.order("updated_at desc").page(params[:page]).per(2).includes(:user,{:article => {:comments => :user}},:sub_category,{:comment => :user},:plan_invitation).where("user_id = #{current_user.id}")
 #    @notifications = Notification.all.inspect
 
     @planInvitation = PlanInvitation.new
